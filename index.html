@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en-ZA">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#123d32">
+  <meta name="description" content="Find local home-service providers in your neighbourhood with NeighbourFix.">
+  <title>NeighbourFix — good help, close to home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#home" aria-label="NeighbourFix home"><span class="brand-mark">n<span>f</span></span><span>neighbour<span class="brand-light">fix</span></span></a>
+    <nav class="main-nav" aria-label="Main navigation">
+      <a href="#services">Services</a><a href="#how-it-works">How it works</a><a href="#providers">For providers</a>
+    </nav>
+    <a class="button button-small" href="#book">Find a provider <span aria-hidden="true">↗</span></a>
+  </header>
+
+  <main id="home">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="live-dot"></span> YOUR NEIGHBOURHOOD, MADE EASIER</p>
+        <h1>Good help.<br><span>Close to home.</span></h1>
+        <p class="hero-text">Find local people for the jobs that make a house feel like home. Start with a request, and we’ll help connect you.</p>
+        <div class="hero-actions"><a class="button" href="#book">Find a local pro <span aria-hidden="true">↗</span></a><a class="text-link" href="#how-it-works">See how it works <span aria-hidden="true">↓</span></a></div>
+        <div class="hero-note"><span class="avatar-stack"><i>🌿</i><i>🧰</i><i>✨</i></span><span>Built for local communities<br><strong>One neighbourhood at a time</strong></span></div>
+      </div>
+      <div class="hero-visual" aria-label="Illustration of home service tools">
+        <div class="sun-shape"></div><div class="hero-card card-top"><span class="card-icon">✦</span><span><strong>Small jobs, sorted.</strong><small>From a tidy-up to a tap fix.</small></span></div>
+        <div class="home-illustration"><div class="roof"></div><div class="house"><div class="window window-left"></div><div class="door"><span></span></div><div class="window window-right"></div></div><div class="plant plant-one">♣</div><div class="plant plant-two">♣</div><div class="path"></div></div>
+        <div class="hero-card card-bottom"><span class="check-icon">✓</span><span><strong>Real people, nearby</strong><small>Request a booking in minutes</small></span></div>
+        <span class="sparkle sparkle-one">✳</span><span class="sparkle sparkle-two">✦</span>
+      </div>
+    </section>
+
+    <section class="trust-strip" aria-label="Marketplace benefits"><span>Made for South African neighbourhoods</span><span><b>01</b> Local-first</span><span><b>02</b> Human support</span><span><b>03</b> Simple to use</span></section>
+
+    <section class="section services-section" id="services">
+      <div class="section-heading"><div><p class="eyebrow">A LITTLE HELP GOES A LONG WAY</p><h2>What needs doing?</h2></div><p>Tell us what you need and where you are. We’ll help you find the right kind of local support.</p></div>
+      <div class="service-grid">
+        <button class="service-card" data-service="Cleaning"><span class="service-emoji">🧼</span><span class="service-title">Cleaning</span><span class="service-desc">A fresh start for your space</span><span class="service-arrow">↗</span></button>
+        <button class="service-card" data-service="Gardening"><span class="service-emoji">🌱</span><span class="service-title">Gardening</span><span class="service-desc">Tidy, trim and grow</span><span class="service-arrow">↗</span></button>
+        <button class="service-card" data-service="Handywork"><span class="service-emoji">🛠️</span><span class="service-title">Handywork</span><span class="service-desc">Those little fixes and jobs</span><span class="service-arrow">↗</span></button>
+        <button class="service-card" data-service="Other"><span class="service-emoji">✳️</span><span class="service-title">Something else</span><span class="service-desc">Tell us what you have in mind</span><span class="service-arrow">↗</span></button>
+      </div>
+    </section>
+
+    <section class="section process-section" id="how-it-works">
+      <div class="process-intro"><p class="eyebrow">NO COMPLICATED APP NEEDED</p><h2>Getting it done<br>is as easy as <span>one, two, three.</span></h2><p>We’re starting small and keeping it personal. Share a request and our team will follow up to help match you with a provider.</p><a class="button button-light" href="#book">Make a request <span aria-hidden="true">↗</span></a></div>
+      <div class="steps"><article class="step"><span class="step-number">01</span><div><h3>Tell us what you need</h3><p>Choose a service, share your area and a few details about the job.</p></div><span class="step-icon">✎</span></article><article class="step"><span class="step-number">02</span><div><h3>We help make a match</h3><p>Our team reviews your request and follows up about availability and next steps.</p></div><span class="step-icon">↗</span></article><article class="step"><span class="step-number">03</span><div><h3>Agree and get it done</h3><p>Confirm the price and timing with your provider before work begins.</p></div><span class="step-icon">✓</span></article></div>
+    </section>
+
+    <section class="section booking-section" id="book">
+      <div class="booking-aside"><p class="eyebrow">LET’S GET STARTED</p><h2>What can we<br>help with?</h2><p>Send a request. No payment is taken here, and a request isn’t a confirmed booking. We’ll get back to you to discuss the details.</p><div class="aside-detail"><span>✦</span><p><strong>A real person will follow up</strong><br>We’re a small, local-first service.</p></div></div>
+      <form class="form-card" id="booking-form">
+        <div class="form-header"><span class="form-step">YOUR REQUEST</span><span class="required-note">* Required</span></div>
+        <div class="form-grid"><label>Your name *<input name="name" autocomplete="name" required placeholder="e.g. Sam Mokoena"></label><label>Mobile number *<input name="phone" type="tel" autocomplete="tel" required placeholder="e.g. 082 123 4567"></label><label class="full-width">Email (optional)<input name="email" type="email" autocomplete="email" placeholder="you@example.com"></label><label>Service *<select name="service" required><option value="">Choose a service</option><option>Cleaning</option><option>Gardening</option><option>Handywork</option><option>Other</option></select></label><label>Suburb / area *<input name="area" autocomplete="address-level2" required placeholder="e.g. Observatory, Cape Town"></label><label>When do you need help?<select name="timing"><option value="Flexible">I'm flexible</option><option>As soon as possible</option><option>This week</option><option>Next week</option><option>Just getting a quote</option></select></label><label>Estimated budget (optional)<select name="budget"><option value="Not specified">Prefer not to say</option><option>Under R500</option><option>R500–R1,000</option><option>R1,000–R2,500</option><option>R2,500+</option><option>Need a quote</option></select></label><label class="full-width">A few details about the job<textarea name="details" rows="3" placeholder="What needs doing? Anything the provider should know?"></textarea></label></div>
+        <label class="consent"><input type="checkbox" name="consent" required><span>I agree that NeighbourFix may use these details to respond to my request and connect me with a suitable service provider. See our <button type="button" class="inline-link" data-open-policy="privacy">privacy notice</button>.</span></label>
+        <button class="button submit-button" type="submit">Send my request <span aria-hidden="true">↗</span></button>
+        <p class="form-footnote">By submitting, you’re asking us to contact you—not confirming a booking or payment.</p>
+        <div class="form-message" id="booking-message" role="status" aria-live="polite"></div>
+      </form>
+    </section>
+
+    <section class="provider-banner" id="providers"><div class="provider-icon">✳</div><div><p class="eyebrow">ARE YOU A LOCAL SERVICE PROVIDER?</p><h2>Good at what you do? <span>Let’s meet.</span></h2><p>We’re building a community of reliable local providers. Tell us a little about your services and area.</p></div><button class="button button-light" id="provider-open">Join as a provider <span aria-hidden="true">↗</span></button></section>
+
+    <section class="section admin-section" id="admin"><details class="admin-details"><summary>NeighbourFix team: open local demo dashboard</summary><div class="admin-panel"><div class="admin-heading"><div><p class="eyebrow">LOCAL DEMO DATA</p><h2>Request dashboard</h2></div><button id="export-data" class="button button-outline" type="button">Export CSV</button></div><div class="stats-grid" id="stats-grid"></div><div class="admin-columns"><div><h3>Customer requests</h3><div id="requests-list" class="admin-list"></div></div><div><h3>Provider applications</h3><div id="providers-list" class="admin-list"></div></div></div><p class="demo-warning">This prototype stores demo submissions in this browser only. It has no login, server, or secure database. Do not use it to collect real customer or identity information until secure hosting and access controls are implemented.</p><button id="clear-data" class="text-button" type="button">Clear this browser’s demo data</button></div></details></section>
+  </main>
+
+  <footer class="footer"><a class="brand brand-footer" href="#home"><span class="brand-mark">n<span>f</span></span><span>neighbour<span class="brand-light">fix</span></span></a><p>Good help, close to home.<br><span>South Africa · Starting in your neighbourhood</span></p><div><button class="footer-link" data-open-policy="privacy">Privacy</button><button class="footer-link" data-open-policy="terms">Terms</button></div><small>© <span id="year"></span> NeighbourFix · A community-first marketplace MVP</small></footer>
+
+  <dialog id="provider-dialog" class="dialog"><form id="provider-form" method="dialog"><div class="dialog-top"><div><p class="eyebrow">JOIN THE COMMUNITY</p><h2>Provider interest form</h2></div><button class="dialog-close" type="button" aria-label="Close">×</button></div><p class="dialog-intro">Share your details and the team can follow up. Submitting this form does not guarantee work or verification.</p><div class="form-grid"><label>Your name / business *<input name="name" required autocomplete="name"></label><label>Mobile number *<input name="phone" required type="tel" autocomplete="tel"></label><label>Email (optional)<input name="email" type="email" autocomplete="email"></label><label>Service area / suburb *<input name="area" required placeholder="e.g. Soweto, Johannesburg"></label><label class="full-width">Services you offer *<input name="services" required placeholder="Cleaning, gardening, repairs..."></label><label class="full-width">A little about your experience<textarea name="experience" rows="3" placeholder="Skills, availability, references you can provide"></textarea></label></div><label class="consent"><input type="checkbox" name="consent" required><span>I agree NeighbourFix may use these details to contact me about joining. See the <button type="button" class="inline-link" data-open-policy="privacy">privacy notice</button>.</span></label><button class="button submit-button" type="submit">Send provider interest <span aria-hidden="true">↗</span></button><div class="form-message" id="provider-message" role="status" aria-live="polite"></div></form></dialog>
+
+  <dialog id="policy-dialog" class="dialog policy-dialog"><div class="dialog-top"><div><p class="eyebrow" id="policy-eyebrow">NEIGHBOURFIX</p><h2 id="policy-title">Privacy notice</h2></div><button class="dialog-close" type="button" aria-label="Close">×</button></div><div id="policy-content" class="policy-content"></div><p class="policy-disclaimer">This is a prototype notice, not legal advice. Replace it with a reviewed policy before collecting real personal information.</p></dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
