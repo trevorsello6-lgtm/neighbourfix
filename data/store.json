@@ -1,0 +1,196 @@
+const express = require('express');
+const fs = require('fs');
+const path = require('path');
+
+const app = express();
+const PORT = process.env.PORT || 3000;
+const DATA_DIR = path.join(__dirname, 'data');
+const DATA_FILE = path.join(DATA_DIR, 'store.json');
+
+app.use(express.json());
+app.use(express.static(path.join(__dirname, 'public')));
+
+function ensureDataFile() {
+  if (!fs.existsSync(DATA_DIR)) fs.mkdirSync(DATA_DIR, { recursive: true });
+  if (!fs.existsSync(DATA_FILE)) {
+    const initial = { requests: [], providers: [], payouts: [] };
+    fs.writeFileSync(DATA_FILE, JSON.stringify(initial, null, 2));
+  }
+}
+
+function readStore() {
+  ensureDataFile();
+  try {
+    const raw = fs.readFileSync(DATA_FILE, 'utf8');
+    const parsed = JSON.parse(raw);
+    return {
+      requests: Array.isArray(parsed.requests) ? parsed.requests : [],
+      providers: Array.isArray(parsed.providers) ? parsed.providers : [],
+      payouts: Array.isArray(parsed.payouts) ? parsed.payouts : []
+    };
+  } catch (error) {
+    return { requests: [], providers: [], payouts: [] };
+  }
+}
+
+function writeStore(store) {
+  ensureDataFile();
+  fs.writeFileSync(DATA_FILE, JSON.stringify(store, null, 2));
+}
+
+function buildSummary(store) {
+  const requests = store.requests;
+  const providers = store.providers;
+  const monthlyPotential = requests.reduce((sum, item) => {
+    const value = Number(String(item.budget || '').replace(/[^\d]/g, '')) || 0;
+    return sum + value;
+  }, 0);
+
+  return {
+    requestCount: requests.length,
+    providerCount: providers.length,
+    newCount: requests.filter(item => item.status === 'New').length + providers.filter(item => item.status === 'New').length,
+    monthlyPotential,
+    averageRequestValue: requests.length ? Math.round(monthlyPotential / requests.length) : 0,
+    liveProviders: providers.filter(item => item.status === 'Matched').length,
+    pipelineValue: providers.filter(item => item.status === 'Matched').length * 1500
+  };
+}
+
+app.get('/api/summary', (req, res) => {
+  const store = readStore();
+  res.json(buildSummary(store));
+});
+
+app.get('/api/requests', (req, res) => {
+  const store = readStore();
+  res.json(store.requests.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)));
+});
+
+app.get('/api/providers', (req, res) => {
+  const store = readStore();
+  res.json(store.providers.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)));
+});
+
+app.get('/api/matches', (req, res) => {
+  const { service, area } = req.query;
+  const store = readStore();
+  const areaMatch = area ? area.toLowerCase() : '';
+  const serviceMatch = service ? service.toLowerCase() : '';
+
+  const matches = store.providers.filter(provider => {
+    const providerServices = String(provider.services || '').toLowerCase();
+    const providerArea = String(provider.area || '').toLowerCase();
+    const matchesService = !serviceMatch || providerServices.includes(serviceMatch);
+    const matchesArea = !areaMatch || providerArea.includes(areaMatch);
+    return matchesService && matchesArea;
+  }).slice(0, 5);
+
+  res.json(matches);
+});
+
+app.post('/api/requests', (req, res) => {
+  const store = readStore();
+  const body = req.body || {};
+
+  const request = {
+    id: String(Date.now() + Math.random()).replace('.', ''),
+    name: String(body.name || '').trim(),
+    phone: String(body.phone || '').trim(),
+    email: String(body.email || '').trim(),
+    service: String(body.service || '').trim(),
+    area: String(body.area || '').trim(),
+    timing: String(body.timing || 'Flexible').trim(),
+    budget: String(body.budget || 'Not specified').trim(),
+    details: String(body.details || '').trim(),
+    consent: Boolean(body.consent),
+    status: 'New',
+    createdAt: new Date().toISOString()
+  };
+
+  if (!request.name || !request.phone || !request.service || !request.area || !request.consent) {
+    return res.status(400).json({ error: 'Name, phone, service, area and consent are required.' });
+  }
+
+  store.requests.unshift(request);
+  writeStore(store);
+  res.status(201).json({ success: true, request });
+});
+
+app.post('/api/providers', (req, res) => {
+  const store = readStore();
+  const body = req.body || {};
+
+  const provider = {
+    id: String(Date.now() + Math.random()).replace('.', ''),
+    name: String(body.name || '').trim(),
+    phone: String(body.phone || '').trim(),
+    email: String(body.email || '').trim(),
+    area: String(body.area || '').trim(),
+    services: String(body.services || '').trim(),
+    experience: String(body.experience || '').trim(),
+    consent: Boolean(body.consent),
+    status: 'New',
+    createdAt: new Date().toISOString()
+  };
+
+  if (!provider.name || !provider.phone || !provider.area || !provider.services || !provider.consent) {
+    return res.status(400).json({ error: 'Name, phone, service area, services and consent are required.' });
+  }
+
+  store.providers.unshift(provider);
+  writeStore(store);
+  res.status(201).json({ success: true, provider });
+});
+
+app.patch('/api/requests/:id/status', (req, res) => {
+  const store = readStore();
+  const { status } = req.body || {};
+  const item = store.requests.find(entry => entry.id === req.params.id);
+  if (!item) return res.status(404).json({ error: 'Request not found' });
+  item.status = status || item.status;
+  writeStore(store);
+  res.json({ success: true, item });
+});
+
+app.patch('/api/providers/:id/status', (req, res) => {
+  const store = readStore();
+  const { status } = req.body || {};
+  const item = store.providers.find(entry => entry.id === req.params.id);
+  if (!item) return res.status(404).json({ error: 'Provider not found' });
+  item.status = status || item.status;
+  writeStore(store);
+  res.json({ success: true, item });
+});
+
+app.post('/api/payouts', (req, res) => {
+  const store = readStore();
+  const body = req.body || {};
+  const payout = {
+    id: String(Date.now() + Math.random()).replace('.', ''),
+    provider: String(body.provider || 'Unknown').trim(),
+    amount: Number(body.amount || 0),
+    service: String(body.service || 'General').trim(),
+    createdAt: new Date().toISOString()
+  };
+
+  store.payouts.unshift(payout);
+  writeStore(store);
+  res.status(201).json({ success: true, payout });
+});
+
+app.get('/api/whatsapp-template', (req, res) => {
+  const { service, area } = req.query;
+  const text = encodeURIComponent(
+    `Hi NeighbourFix, I need help with ${service || 'a local service'} in ${area || 'my area'}. Please contact me with availability and pricing.`
+  );
+  res.json({ url: `https://wa.me/27761234567?text=${text}` });
+});
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+app.listen(PORT, () => {
+  console.log(`NeighbourFix MVP running on http://localhost:${PORT}`);
+});

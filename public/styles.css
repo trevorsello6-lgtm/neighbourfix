@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en-ZA">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="NeighbourFix is a local marketplace for cleaning, gardening and handy services in South Africa.">
+  <title>NeighbourFix | Local help, close to home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand-wrap">
+      <div class="brand-mark">N<span>F</span></div>
+      <div class="brand-copy">neighbour<span>fix</span></div>
+    </div>
+    <nav class="main-nav">
+      <a href="#services">Services</a>
+      <a href="#how-it-works">How it works</a>
+      <a href="#dashboard">Dashboard</a>
+      <a href="#roadmap">Launch plan</a>
+    </nav>
+    <a href="#book" class="button header-button">Get help now</a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">LOCAL. TRUSTED. NEIGHBOURHOOD-FIRST.</p>
+        <h1>Good help.<br><span>Close to home.</span></h1>
+        <p class="subtitle">NeighbourFix helps households and small businesses find reliable local pros for cleaning, gardening, repairs and odd jobs—without the long search.</p>
+        <div class="action-row">
+          <a href="#book" class="button">Book a local pro</a>
+          <a href="#how-it-works" class="link-button">See how it works</a>
+        </div>
+        <div class="trust-row">
+          <div class="trust-avatars"><span>🌿</span><span>🧰</span><span>✨</span></div>
+          <div>
+            <strong>Built for local neighbourhoods</strong><br>
+            <small>Small, practical jobs first. Big growth later.</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="badge badge-top">Small jobs, sorted.</div>
+        <div class="house-graphic">
+          <div class="roof"></div>
+          <div class="box">
+            <div class="window left"></div>
+            <div class="door"></div>
+            <div class="window right"></div>
+          </div>
+          <div class="plant one">✿</div>
+          <div class="plant two">✿</div>
+        </div>
+        <div class="badge badge-bottom">Real people. Real areas.</div>
+      </div>
+    </section>
+
+    <section class="benefits-strip">
+      <span>South Africa-first</span>
+      <span>Cashflow + trust</span>
+      <span>Local service matching</span>
+      <span>WhatsApp friendly</span>
+    </section>
+
+    <section class="section" id="services">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">WHAT YOU NEED</p>
+          <h2>Start with the jobs that happen every week.</h2>
+        </div>
+        <p>We focus on services that are common, recurring and easy to explain. That makes the MVP easier to test and faster to improve.</p>
+      </div>
+
+      <div class="service-grid">
+        <button class="service-card" data-service="Cleaning">
+          <span class="icon">🧼</span>
+          <strong>Cleaning</strong>
+          <small>Deep cleans, home refreshing, routine touch-ups.</small>
+        </button>
+        <button class="service-card" data-service="Gardening">
+          <span class="icon">🌱</span>
+          <strong>Gardening</strong>
+          <small>Weeding, trimming, outdoor upkeep and plant care.</small>
+        </button>
+        <button class="service-card" data-service="Handywork">
+          <span class="icon">🛠️</span>
+          <strong>Handywork</strong>
+          <small>Fixes, mounting, assembly and home maintenance.</small>
+        </button>
+        <button class="service-card" data-service="Other">
+          <span class="icon">✳️</span>
+          <strong>Something else</strong>
+          <small>Tell us what you need and we’ll match the closest fit.</small>
+        </button>
+      </div>
+    </section>
+
+    <section class="section process" id="how-it-works">
+      <div class="process-copy">
+        <p class="eyebrow">KEEP IT SIMPLE</p>
+        <h2>Three steps, no complicated app.</h2>
+        <p>We want to validate demand before building a heavy platform. That keeps costs down while proving the model in one or two neighbourhoods.</p>
+        <a href="#book" class="button alt">Request service</a>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <span>01</span>
+          <div>
+            <h3>Tell us what you need</h3>
+            <p>Pick a service, area and budget. Share a few details.</p>
+          </div>
+        </div>
+        <div class="step">
+          <span>02</span>
+          <div>
+            <h3>We match you</h3>
+            <p>We shortlist nearby providers and contact them quickly.</p>
+          </div>
+        </div>
+        <div class="step">
+          <span>03</span>
+          <div>
+            <h3>Confirm & done</h3>
+            <p>Agree price, date and work scope before the job starts.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section booking" id="book">
+      <div class="booking-copy">
+        <p class="eyebrow">REQUEST</p>
+        <h2>Tell us what needs doing.</h2>
+        <p>We’re testing the first neighbourhood version. Requests are saved in the live demo and help measure interest.</p>
+        <div class="mini-box">
+          <strong>WhatsApp-ready</strong>
+          <p>Fast, human follow-up. We can route leads through WhatsApp or call-back workflows.</p>
+        </div>
+      </div>
+
+      <form class="card form-card" id="request-form">
+        <div class="form-header">
+          <span>Service request</span>
+          <small>* required</small>
+        </div>
+        <div class="form-grid">
+          <label>
+            Your name *
+            <input name="name" required placeholder="e.g. Sam Mokoena">
+          </label>
+          <label>
+            Mobile number *
+            <input name="phone" type="tel" required placeholder="e.g. 082 123 4567">
+          </label>
+          <label class="full-width">
+            Email (optional)
+            <input name="email" type="email" placeholder="you@example.com">
+          </label>
+          <label>
+            Service *
+            <select name="service" required>
+              <option value="">Choose</option>
+              <option>Cleaning</option>
+              <option>Gardening</option>
+              <option>Handywork</option>
+              <option>Other</option>
+            </select>
+          </label>
+          <label>
+            Area / suburb *
+            <input name="area" required placeholder="e.g. Mowbray, Cape Town">
+          </label>
+          <label>
+            Timing
+            <select name="timing">
+              <option>Flexible</option>
+              <option>As soon as possible</option>
+              <option>This week</option>
+              <option>Next week</option>
+              <option>Just exploring prices</option>
+            </select>
+          </label>
+          <label>
+            Budget
+            <select name="budget">
+              <option>Not specified</option>
+              <option>Under R500</option>
+              <option>R500 – R1,000</option>
+              <option>R1,000 – R2,500</option>
+              <option>R2,500+</option>
+            </select>
+          </label>
+          <label class="full-width">
+            Details
+            <textarea name="details" rows="3" placeholder="Tell us what you need, where it is, and anything important the provider should know."></textarea>
+          </label>
+        </div>
+
+        <label class="checkbox-row">
+          <input type="checkbox" name="consent" required>
+          <span>I agree to NeighbourFix using my details to respond to this request and help match me with a local provider.</span>
+        </label>
+
+        <button type="submit" class="button full-width-button">Send request</button>
+        <p class="small-note">This is a prototype request, not a confirmed booking or payment.</p>
+        <div id="request-message" class="message-box" aria-live="polite"></div>
+      </form>
+    </section>
+
+    <section class="provider-cta">
+      <div class="provider-icon">✳</div>
+      <div>
+        <p class="eyebrow white">PROVIDERS</p>
+        <h3>Know your trade? Join the network.</h3>
+      </div>
+      <button id="provider-open" class="button alt">Join as a provider</button>
+    </section>
+
+    <section class="section dashboard-section" id="dashboard">
+      <div class="section-head narrow-head">
+        <div>
+          <p class="eyebrow">TEAM VIEW</p>
+          <h2>Live demo dashboard</h2>
+        </div>
+        <button id="export-csv" class="button ghost">Export CSV</button>
+      </div>
+
+      <div class="stats-grid" id="stats-grid"></div>
+
+      <div class="dashboard-columns">
+        <div class="panel">
+          <h3>Customer requests</h3>
+          <div id="request-list" class="list"></div>
+        </div>
+        <div class="panel">
+          <h3>Provider applications</h3>
+          <div id="provider-list" class="list"></div>
+        </div>
+      </div>
+
+      <div class="small-tools">
+        <button id="clear-demo" class="text-button">Clear demo data</button>
+      </div>
+    </section>
+
+    <section class="section roadmap" id="roadmap">
+      <p class="eyebrow">FIRST 90 DAYS</p>
+      <h2>Roadmap for a realistic launch in South Africa.</h2>
+      <div class="roadmap-grid">
+        <div class="roadmap-card">
+          <span>Days 1–30</span>
+          <h3>Test the offer locally</h3>
+          <p>Pick one suburb and list a limited set of services. Validate with 25–50 real customer requests and 10–15 providers.</p>
+        </div>
+        <div class="roadmap-card">
+          <span>Days 31–60</span>
+          <h3>Get a repeatable system</h3>
+          <p>Use a WhatsApp-first lead flow, a pricing structure, and a scored provider list. Track response times and conversions.</p>
+        </div>
+        <div class="roadmap-card">
+          <span>Days 61–90</span>
+          <h3>Expand into a second area</h3>
+          <p>After positive satisfaction and repeat bookings, add a second neighbourhood and formalise provider onboarding rules.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="brand-wrap footer-brand">
+      <div class="brand-mark">N<span>F</span></div>
+      <div class="brand-copy">neighbour<span>fix</span></div>
+    </div>
+    <p>Good help, close to home.</p>
+    <div class="footer-links">
+      <button type="button" class="text-button" data-policy="privacy">Privacy</button>
+      <button type="button" class="text-button" data-policy="terms">Terms</button>
+    </div>
+  </footer>
+
+  <dialog id="provider-dialog" class="modal">
+    <form id="provider-form" method="dialog">
+      <div class="modal-head">
+        <div>
+          <p class="eyebrow">JOIN</p>
+          <h3>Provider interest</h3>
+        </div>
+        <button type="button" class="close-button" aria-label="Close provider form">×</button>
+      </div>
+
+      <div class="form-grid modal-grid">
+        <label>
+          Your name / business *
+          <input name="name" required>
+        </label>
+        <label>
+          Mobile number *
+          <input name="phone" type="tel" required>
+        </label>
+        <label class="full-width">
+          Email (optional)
+          <input name="email" type="email">
+        </label>
+        <label>
+          Area / suburb *
+          <input name="area" required>
+        </label>
+        <label>
+          Services offered *
+          <input name="services" required placeholder="Cleaning, gardening, repairs..."></input>
+        </label>
+        <label class="full-width">
+          Experience / notes
+          <textarea name="experience" rows="3" placeholder="What work do you do? What experience, certifications or references can you share?"></textarea>
+        </label>
+      </div>
+
+      <label class="checkbox-row">
+        <input type="checkbox" name="consent" required>
+        <span>I agree that NeighbourFix may use these details to contact me about joining the network.</span>
+      </label>
+
+      <button type="submit" class="button full-width-button">Send provider interest</button>
+      <div id="provider-message" class="message-box" aria-live="polite"></div>
+    </form>
+  </dialog>
+
+  <dialog id="policy-dialog" class="modal policy-modal">
+    <div class="modal-head">
+      <div>
+        <p class="eyebrow">NEIGHBOURFIX</p>
+        <h3 id="policy-title">Privacy notice</h3>
+      </div>
+      <button type="button" class="close-button" aria-label="Close policy">×</button>
+    </div>
+    <div id="policy-content" class="policy-content"></div>
+  </dialog>
+
+  <div id="toast" class="toast" aria-live="polite"></div>
+</body>
+</html>
